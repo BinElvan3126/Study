@@ -221,4 +221,47 @@ i=6 1 2 3 5 7 8 (9)
 i=7 END.
 
 
+Merge Sort
+1 5 7 2 8 3 9
+Divide: [1 5 7 2] | [8 3 9]
+Divide: [1 5] | [7 2] -> [8] | [3 9]
+Divide: [1] | [5] -> [7] | [2] -> [3] | [9]
+Merge: [1 5] | [2 7] -> [3 9]
+Merge: [1 2 5 7] | [3 8 9]
+Merge: [1 2 3 5 7 8 9]
+END.
+
+Heap Sort
+1 5 7 2 8 3 9
+Build max heap: 9 8 7 2 5 3 1
+Extract max: [1] 8 7 2 5 3 | (9)
+Heapify: 8 5 7 2 1 3 | 9
+Extract max: [3] 5 7 2 1 | 8 9
+Heapify: 7 5 3 2 1 | 8 9
+Extract max: [1] 5 3 2 | 7 8 9
+Heapify: 5 2 3 1 | 7 8 9
+Extract max: [1] 2 3 | 5 7 8 9
+Heapify: 3 2 1 | 5 7 8 9
+Extract max: [1] 2 | 3 5 7 8 9
+Heapify: 2 1 | 3 5 7 8 9
+Extract max: [1] | 2 3 5 7 8 9
+Sorted: 1 2 3 5 7 8 9
+END.
+
+Quick Sort
+1 5 7 2 8 3 9
+Pivot: 9 -> Partition: [1 5 7 2 8 3] | 9
+Pivot: 3 -> Partition: [1 2] | 3 | [5 7 8]
+Pivot: 2 -> Partition: [1] | 2
+Pivot: 7 -> Partition: [5] | 7 | [8]
+Sorted: 1 2 3 5 7 8 9
+END.
+
+Radix Sort
+1 5 7 2 8 3 55 90
+Sorting by 1s place: [1 2 3 5 5 7 8 90]
+Sorting by 10s place: [1 2 3 5 5 7 8 90]
+Sorted: 1 2 3 5 5 7 8 90
+END.
+
 */
