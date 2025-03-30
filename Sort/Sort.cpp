@@ -259,9 +259,9 @@ END.
 
 Radix Sort
 1 5 7 2 8 3 55 90
-Sorting by 1s place: [1 2 3 5 5 7 8 90]
-Sorting by 10s place: [1 2 3 5 5 7 8 90]
-Sorted: 1 2 3 5 5 7 8 90
+Sorting by 1s place: [90 01 02 03 05 55 07 08]
+Sorting by 10s place: [01 02 03 05 07 08 55 90]
+Sorted: 01 02 03 05 07 08 55 90
 END.
 
 */
