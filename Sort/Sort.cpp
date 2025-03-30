@@ -135,14 +135,33 @@ void quickSort(std::vector<int>& a, int low, int high)
     }
 }
 // Radix Sort
-void countingSort()
+void countingSort(std::vector<int>& a, int exp)
 {
+    int n = a.size();
+    std::vector<int> output(n); // out arr
+    int count[10] = {0}; // count arr for digits (0-9)
 
+    for (int i = 0; i < n; i++) {
+        count[(a[i] / exp) % 10]++; // update count arr to store cur pos
+    }
+    for (int i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+    for (int i = n - 1; i >= 0; i--) {
+        int digit = (a[i] / exp) % 10;
+        output[count[digit] - 1] = a[i];
+        count[digit]--;
+    }
+    for (int i = 0; i < n; i++) {
+        a[i] = output[i];
+    }
 }
 void radixSort(std::vector<int>& a)
 {
     int maxNum = *std::max_element(a.begin(), a.end());
-    
+    for (int exp = 1; maxNum / exp > 0; exp *= 10) {
+        countingSort(a, exp);
+    }
 }
 
 int main() {
@@ -166,6 +185,12 @@ int main() {
     // for (int i = 0; i < b.size(); i++) {
     //     std::cout << b[i] << " ";
     // }
+
+    std::vector<int> b = {1, 5, 7, 2, 8, 3, 55, 90};
+    radixSort(b);
+    for (int i = 0; i < b.size(); i++) {
+        std::cout << b[i] << " ";
+    }
 
     return 0;
 }
