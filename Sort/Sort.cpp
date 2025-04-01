@@ -177,8 +177,8 @@ int main() {
     // heapSort(a, na);
     // print(a, na);
 
-    // mergeSort(a, 0, na - 1);
-    // print(a, na);
+    mergeSort(a, 0, na - 1);
+    print(a, na);
     
     // std::vector<int> b = {1, 5, 7, 2, 8, 3, 5, 9};
     // quickSort(b, 0, b.size() - 1);
@@ -186,11 +186,11 @@ int main() {
     //     std::cout << b[i] << " ";
     // }
 
-    std::vector<int> b = {1, 5, 7, 2, 8, 3, 55, 90};
-    radixSort(b);
-    for (int i = 0; i < b.size(); i++) {
-        std::cout << b[i] << " ";
-    }
+    // std::vector<int> b = {1, 5, 7, 2, 8, 3, 55, 90};
+    // radixSort(b);
+    // for (int i = 0; i < b.size(); i++) {
+    //     std::cout << b[i] << " ";
+    // }
 
     return 0;
 }
