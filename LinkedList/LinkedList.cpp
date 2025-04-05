@@ -2,73 +2,73 @@
 
 using namespace std;
 
-struct Node
+typedef struct singlyNode
 {
     int data;
-    Node* next;
-};
+    singlyNode *next;
+} NODE;
 
-struct LinkedList 
+typedef struct singlyList 
 {
-    Node* head;
-    Node* tail;
-    ~LinkedList() {  // Destructor
-        Node* current = head;
+    singlyNode *head;
+    singlyNode *tail;
+    ~singlyList() {  // Destructor
+        singlyNode *current = head;
         while (current != nullptr) {
-            Node* next = current->next;
+            singlyNode *next = current->next;
             delete current;
             current = next;
         }
         head = nullptr;
         tail = nullptr;
     }
-};
+} LIST;
 
-Node* createNode(int x)
+singlyNode *createSinglyNode(int x)
 {
-    Node* p = new Node;
+    singlyNode *p = new singlyNode;
     p->data = x;
     p->next = nullptr;
     return p;
 }
 
-void creatLinkedList(LinkedList& list)
+void creatSinglyLinkedList(singlyList& list)
 {
     list.head = nullptr;
     list.tail = nullptr;
 }
 
-void insertTail(LinkedList& list, int x)
+void insertTailSinglyList(singlyList& list, int x)
 {
     if (list.head == nullptr) {
-        Node* p = createNode(x);
+        singlyNode *p = createSinglyNode(x);
         list.head = p;
         list.tail = p;
     }
     else {
-        Node* p = createNode(x);
+        singlyNode *p = createSinglyNode(x);
         list.tail->next = p;
         list.tail = p;
     }
 }
 
-void insertHead(LinkedList& list, int x) 
+void insertHeadSinglyList(singlyList& list, int x) 
 {
     if (list.head == nullptr) {
-        Node* p = createNode(x);
+        singlyNode *p = createSinglyNode(x);
         list.head = p;
         list.tail = p;
     }
     else {
-        Node* p = createNode(x);
+        singlyNode *p = createSinglyNode(x);
         p->next = list.head;
         list.head = p;
     }
 }
 
-void insertYAfterX(LinkedList& list, int x, int y)
+void insertYAfterXSinglyList(singlyList& list, int x, int y)
 {
-    Node* cur = list.head;
+    singlyNode *cur = list.head;
     while(cur != nullptr) {
         if (cur->data == x) {
             break;
@@ -76,26 +76,26 @@ void insertYAfterX(LinkedList& list, int x, int y)
         cur = cur->next;
     }
     if (cur == nullptr) return;
-    if (cur == list.tail) insertTail(list, y);
+    if (cur == list.tail) insertTailSinglyList(list, y);
     else {
-        Node* p = createNode(y);
+        singlyNode* p = createSinglyNode(y);
         p->next = cur->next;
         cur->next = p;
     }
 }
 
-void inputList(LinkedList& list) 
+void inputSinglyList(singlyList& list) 
 {
     while (true) {
         int x;
         cout << "Ctrl + X -> Enter to escape";
         cin >> x;
-        insertTail(list, x);
+        insertTailSinglyList(list, x);
     }
 }
 
-void printLinkedList(LinkedList list) {
-    Node* cur = list.head;
+void printSinglyLinkedList(singlyList list) {
+    singlyNode *cur = list.head;
     while (cur != NULL) {
         cout << cur -> data << " ";
         cur = cur -> next;
@@ -103,25 +103,65 @@ void printLinkedList(LinkedList list) {
     cout << endl;
 }
 
-void deleteHead(LinkedList& list)
+void deleteHead(singlyList& list)
 {
     if (list.head != NULL && list.head == list.tail) {
-        Node* p = list.head;
+        singlyNode* p = list.head;
         list.head = list.head -> next;
         delete p;
     }
 }
 
-void deleteAll(LinkedList& list) {
+void deleteAll(singlyList& list) {
     while (list.head != NULL) {
         deleteHead(list);
     }
 }
 
+// Doubly Linkedlist
+
+typedef struct doublyNode 
+{
+    int data;
+    doublyNode *next, *prev;
+} D_NODE;
+
+typedef struct doublyList
+{
+    doublyNode *head;
+    doublyNode *tail;
+} D_LIST;
+
+// Circular Single Linkedlist
+
+typedef struct circularNode
+{
+    int data;
+    circularNode *next;
+} C_NODE;
+
+typedef struct circularList
+{
+    circularNode *head;
+    circularNode *tail;
+} C_LIST;
+
+// Circular Doubly Linkedlist
+
+typedef struct circularDoublyNode {
+    int data;
+    circularDoublyNode *next, *prev;
+} CD_NODE;
+
+typedef struct circularDoublyList {
+    circularDoublyNode *head;
+    circularDoublyNode *tail;
+} CD_LIST;
+
 int main() 
 {
-    LinkedList list;
-    creatLinkedList(list);
+    singlyList list;
+    creatSinglyLinkedList(list);
 
     // deleteAll(list);
     return 0;
