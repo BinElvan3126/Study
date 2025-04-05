@@ -7,7 +7,7 @@ struct Node
     int data;
     Node* next;
 };
-// 
+
 struct LinkedList 
 {
     Node* head;
@@ -32,43 +32,43 @@ Node* createNode(int x)
     return p;
 }
 
-void creatLinkedList(LinkedList& l)
+void creatLinkedList(LinkedList& list)
 {
-    l.head = nullptr;
-    l.tail = nullptr;
+    list.head = nullptr;
+    list.tail = nullptr;
 }
 
-void insertTail(LinkedList& l, int x)
+void insertTail(LinkedList& list, int x)
 {
-    if (l.head == nullptr) {
+    if (list.head == nullptr) {
         Node* p = createNode(x);
-        l.head = p;
-        l.tail = p;
+        list.head = p;
+        list.tail = p;
     }
     else {
         Node* p = createNode(x);
-        l.tail->next = p;
-        l.tail = p;
+        list.tail->next = p;
+        list.tail = p;
     }
 }
 
-void insertHead(LinkedList& l, int x) 
+void insertHead(LinkedList& list, int x) 
 {
-    if (l.head == nullptr) {
+    if (list.head == nullptr) {
         Node* p = createNode(x);
-        l.head = p;
-        l.tail = p;
+        list.head = p;
+        list.tail = p;
     }
     else {
         Node* p = createNode(x);
-        p->next = l.head;
-        l.head = p;
+        p->next = list.head;
+        list.head = p;
     }
 }
 
-void insertYAfterX(LinkedList& l, int x, int y)
+void insertYAfterX(LinkedList& list, int x, int y)
 {
-    Node* cur = l.head;
+    Node* cur = list.head;
     while(cur != nullptr) {
         if (cur->data == x) {
             break;
@@ -76,7 +76,7 @@ void insertYAfterX(LinkedList& l, int x, int y)
         cur = cur->next;
     }
     if (cur == nullptr) return;
-    if (cur == l.tail) insertTail(l, y);
+    if (cur == list.tail) insertTail(list, y);
     else {
         Node* p = createNode(y);
         p->next = cur->next;
@@ -84,13 +84,13 @@ void insertYAfterX(LinkedList& l, int x, int y)
     }
 }
 
-void inputList(LinkedList& l) 
+void inputList(LinkedList& list) 
 {
     while (true) {
         int x;
         cout << "Ctrl + X -> Enter to escape";
         cin >> x;
-        insertTail(l, x);
+        insertTail(list, x);
     }
 }
 
@@ -103,26 +103,26 @@ void printLinkedList(LinkedList list) {
     cout << endl;
 }
 
-void deleteHead(LinkedList& l)
+void deleteHead(LinkedList& list)
 {
-    if (l.head != NULL && l.head == l.tail) {
-        Node* p = l.head;
-        l.head = l.head -> next;
+    if (list.head != NULL && list.head == list.tail) {
+        Node* p = list.head;
+        list.head = list.head -> next;
         delete p;
     }
 }
 
-void deleteAll(LinkedList& l) {
-    while (l.head != NULL) {
-        deleteHead(l);
+void deleteAll(LinkedList& list) {
+    while (list.head != NULL) {
+        deleteHead(list);
     }
 }
 
 int main() 
 {
-    LinkedList l;
-    creatLinkedList(l);
+    LinkedList list;
+    creatLinkedList(list);
 
-    deleteAll(l);
+    // deleteAll(list);
     return 0;
 }
